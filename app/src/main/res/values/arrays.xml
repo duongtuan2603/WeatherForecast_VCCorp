@@ -1,0 +1,44 @@
+<resources>
+    <!-- Reply Preference -->
+    <string-array name="reply_entries">
+        <item>Reply</item>
+        <item>Reply to all</item>
+    </string-array>
+
+    <string-array name="reply_values">
+        <item>reply</item>
+        <item>reply_all</item>
+    </string-array>
+    <string-array name="TemperatureLabels">
+        <item>Celsius</item>
+        <item>Faraheit</item>
+    </string-array>
+    <string-array name="TemperatureValues">
+        <item>Celsius</item>
+        <item>Faraheit</item>
+    </string-array>
+    <string-array name="WindLabels">
+        <item>kilometers per hour</item>
+        <item>miles per hour</item>
+    </string-array>
+    <string-array name="WindValues">
+        <item>kph</item>
+        <item>mph</item>
+    </string-array>
+    <string-array name="UpdateLabels">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>12 hour</item>
+        <item>1 day</item>
+    </string-array>
+    <string-array name="UpdateValues">
+        <item>15 minutes</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>12 hours</item>
+        <item>1 day</item>
+    </string-array>
+
+
+</resources>

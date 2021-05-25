@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="hour"
+            type="com.example.weatherforecastmvvm.Hour" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/txteachhourtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:text="@{hour.time.substring(11)}"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:id="@+id/imgeachhour"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_margin="10dp"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/txteachhourtemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:text="@null"
+            android:textSize="14sp" />
+
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,56 @@
+<PreferenceScreen
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+   <PreferenceCategory
+       app:key="home"
+       app:title="HOME">
+       <Preference
+           app:key="functions"
+           app:title="Functions"
+           />
+       <ListPreference
+           app:key="UpdateFrequency"
+           app:title="Update Frequency"
+           app:entries="@array/UpdateLabels"
+           app:entryValues="@array/UpdateValues"
+           app:useSimpleSummaryProvider="true"
+           app:positiveButtonText="@null"
+           app:negativeButtonText="@null"
+           />
+   </PreferenceCategory>
+    <PreferenceCategory
+        app:key="units"
+        app:title="UNITS">
+        <ListPreference
+            app:entries="@array/TemperatureLabels"
+            app:entryValues="@array/TemperatureValues"
+            app:key="TemperatureUnits"
+            app:title="Temperature Units"
+            app:useSimpleSummaryProvider="true"
+            app:positiveButtonText="@null"
+            app:negativeButtonText="@null"/>
+        <ListPreference
+            app:key="WindSpeedUnits"
+            app:title="Wind Speed Units"
+            app:entries="@array/WindLabels"
+            app:entryValues="@array/WindValues"
+            app:useSimpleSummaryProvider="true"
+            app:positiveButtonText="@null"
+            app:negativeButtonText="@null"/>
+
+    </PreferenceCategory>
+    <PreferenceCategory
+        app:key="notification"
+        app:title="NOTIFICATION">
+        <Preference
+            app:key="Daily"
+            app:title="Daily"
+            app:summary="Daily notification, on-going notification"/>
+        <Preference
+            app:key="alerts"
+            app:title="Alerts"
+            app:summary="Severe alerts, rain and snow alarm"/>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

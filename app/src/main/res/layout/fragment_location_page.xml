@@ -1,0 +1,661 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="returnedforecast"
+            type="com.example.weatherforecastmvvm.ReturnedForecast" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollviewhomepage"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="100dp"
+            android:layout_marginBottom="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/txtlocationname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="@{returnedforecast.location.name}"
+                        android:textColor="@color/white"
+                        android:textSize="30sp" />
+
+
+                    <TextView
+                        android:id="@+id/txtcurrenttemp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginBottom="30dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="@null"
+                        android:textColor="@color/white"
+                        android:textSize="82sp" />
+
+
+                    <TextView
+                        android:id="@+id/txtcurrenttempunit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="135dp"
+                        android:layout_marginLeft="135dp"
+                        android:layout_marginTop="45dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="\u2103"
+                        android:textColor="@color/white"
+                        android:textSize="36sp" />
+
+
+                    <TextView
+                        android:id="@+id/tempdescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginStart="135dp"
+                        android:layout_marginLeft="135dp"
+                        android:layout_marginTop="110dp"
+                        android:fontFamily="@font/roboto"
+                        android:maxLines="2"
+                        android:singleLine="false"
+                        android:text="@{returnedforecast.current.condition.text}"
+                        android:textColor="@color/white"
+                        android:textSize="19sp" />
+                </RelativeLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="10dp">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerviewhour"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@color/white"
+                        android:orientation="horizontal"></androidx.recyclerview.widget.RecyclerView>
+                </androidx.cardview.widget.CardView>
+
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardviewday"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:cardCornerRadius="10dp">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerviewday"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@color/white"
+                        android:orientation="vertical"></androidx.recyclerview.widget.RecyclerView>
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardviewchanceofrain"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:cardCornerRadius="10dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:paddingStart="0dp"
+                        android:paddingLeft="0dp"
+                        android:paddingTop="10dp"
+                        android:paddingEnd="33dp"
+                        android:paddingRight="33dp"
+                        android:paddingBottom="20dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto"
+                            android:gravity="center_horizontal"
+                            android:padding="5dp"
+                            android:text="Precipitation"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="33dp"
+                            android:layout_marginLeft="33dp"
+                            android:layout_marginTop="56dp"
+                            android:fontFamily="@font/roboto"
+                            android:paddingBottom="10dp"
+                            android:text="@{returnedforecast.forecast.forecastday.get(0).day.daily_chance_of_rain+'%'}"
+                            android:textColor="#24C3F1"
+                            android:textSize="43sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="33dp"
+                            android:layout_marginLeft="33dp"
+                            android:layout_marginTop="102dp"
+                            android:fontFamily="@font/roboto"
+                            android:paddingTop="10dp"
+                            android:text="Chance of Rain"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="224dp"
+                            android:layout_marginLeft="224dp"
+                            android:layout_marginTop="58dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="@{String.valueOf(returnedforecast.forecast.forecastday.get(0).day.totalprecip_mm)}"
+                            android:textColor="#68C8FF"
+                            android:textSize="16sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="224dp"
+                            android:layout_marginLeft="224dp"
+                            android:layout_marginTop="76dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="Precipitation"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/dewpointtemp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="224dp"
+                            android:layout_marginLeft="224dp"
+                            android:layout_marginTop="119dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="null"
+                            android:textColor="#68C8FF"
+                            android:textSize="16sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="224dp"
+                            android:layout_marginLeft="224dp"
+                            android:layout_marginTop="136dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="Dew Point"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="224dp"
+                            android:layout_marginLeft="224dp"
+                            android:layout_marginTop="172dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="@{String.valueOf(returnedforecast.current.humidity)}"
+                            android:textColor="#68C8FF"
+                            android:textSize="16sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="244dp"
+                            android:layout_marginLeft="244dp"
+                            android:layout_marginTop="172dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="%"
+                            android:textColor="#68C8FF"
+                            android:textSize="16sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="224dp"
+                            android:layout_marginLeft="224dp"
+                            android:layout_marginTop="191dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="Humid"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/feels_like_temp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="224dp"
+                            android:layout_marginLeft="224dp"
+                            android:layout_marginTop="229dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="@null"
+                            android:textColor="#68C8FF"
+                            android:textSize="16sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="224dp"
+                            android:layout_marginLeft="224dp"
+                            android:layout_marginTop="248dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="Real Feel"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:layout_marginStart="56dp"
+                            android:layout_marginLeft="56dp"
+                            android:layout_marginTop="156dp"
+                            android:scaleType="center"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/ic_umbrella" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:cardCornerRadius="10dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:paddingStart="0dp"
+                        android:paddingLeft="0dp"
+                        android:paddingTop="10dp"
+                        android:paddingEnd="35dp"
+                        android:paddingRight="35dp"
+                        android:paddingBottom="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto"
+                            android:text="Wind and Visibility"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/currentwind"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="35dp"
+                            android:layout_marginLeft="35dp"
+                            android:layout_marginTop="54dp"
+                            android:text="@null"
+                            android:textColor="#7DCE7A"
+                            android:textSize="32sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/currentwindunit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="75sp"
+                            android:layout_marginLeft="75sp"
+                            android:layout_marginTop="74dp"
+                            android:text="@null"
+                            android:textColor="#7DCE7A"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:layout_width="73.24dp"
+                            android:layout_height="59dp"
+                            android:layout_marginStart="35dp"
+                            android:layout_marginLeft="35dp"
+                            android:layout_marginTop="114dp"
+                            android:scaleType="centerCrop"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/ic_wind" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="108dp"
+                            android:layout_marginLeft="108dp"
+                            android:layout_marginTop="133dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="@{returnedforecast.current.wind_dir}"
+                            android:textColor="#7DCE7A"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="225dp"
+                            android:layout_marginLeft="225dp"
+                            android:layout_marginTop="80dp"
+                            android:text="@{String.valueOf((int)returnedforecast.current.vis_km)}"
+                            android:textColor="#7DCE7A"
+                            android:textSize="32sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="265dp"
+                            android:layout_marginLeft="265dp"
+                            android:layout_marginTop="100dp"
+                            android:text="km"
+                            android:textColor="#7DCE7A"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:layout_width="127dp"
+                            android:layout_height="24dp"
+                            android:layout_marginStart="217dp"
+                            android:layout_marginLeft="217dp"
+                            android:layout_marginTop="127dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/ic_visibility" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:cardCornerRadius="10dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp">
+
+                        <TextView
+                            android:layout_width="56dp"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto"
+                            android:text="UV Index"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="34dp"
+                            android:layout_marginLeft="34dp"
+                            android:layout_marginTop="46dp"
+                            android:text="@{String.valueOf((int)returnedforecast.current.uv)}"
+                            android:textColor="#575757"
+                            android:textSize="43sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/uvtitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="81dp"
+                            android:layout_marginLeft="81dp"
+                            android:layout_marginTop="53dp"
+                            android:text="Very high"
+                            android:textColor="#575757"
+                            android:textSize="18sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/uvdescription"
+                            android:layout_width="178dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="81dp"
+                            android:layout_marginLeft="81dp"
+                            android:layout_marginTop="77dp"
+                            android:text="Unprotected skin and eyes will be damaged and can be burn quickly"
+                            android:textColor="#9F9F9F"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:layout_width="43dp"
+                            android:layout_height="14.78dp"
+                            android:layout_marginStart="287dp"
+                            android:layout_marginLeft="287dp"
+                            android:layout_marginTop="62dp"
+                            android:scaleType="centerCrop"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/ic_glasses" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="139dp"
+                            android:foregroundGravity="center_horizontal"
+                            android:padding="10dp"
+                            android:src="@drawable/uvindex"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:cardCornerRadius="10dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:text="Air Quality"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="39dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="@{String.valueOf((int)returnedforecast.current.air_quality.pm2_5)}"
+                            android:textColor="#575757"
+                            android:textSize="43sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/aqititle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="81dp"
+                            android:layout_marginLeft="81dp"
+                            android:layout_marginTop="43dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="Moderate"
+                            android:textColor="#575757"
+                            android:textSize="18sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/aqidescription"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="81dp"
+                            android:layout_marginLeft="81dp"
+                            android:layout_marginTop="67dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="Air Quality is acceptable"
+                            android:textColor="#9F9F9F"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="67dp"
+                            android:src="@drawable/aqi"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    app:cardCornerRadius="10dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginBottom="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="Disaster Tracker"
+                            android:textColor="#898989"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/alerttitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="128dp"
+                            android:layout_marginLeft="128dp"
+                            android:layout_marginTop="60dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="All is well"
+                            android:textColor="#575757"
+                            android:textSize="18sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/alertdescription"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="128dp"
+                            android:layout_marginLeft="128dp"
+                            android:layout_marginTop="84dp"
+                            android:fontFamily="@font/roboto"
+                            android:text="No threats detected nearby"
+                            android:textColor="#9F9F9F"
+                            android:textSize="14sp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="29dp"
+                            android:layout_marginLeft="29dp"
+                            android:layout_marginTop="50dp"
+                            android:scaleType="centerCrop"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/ic_hurricance" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </RelativeLayout>
+</layout>
