@@ -135,14 +135,14 @@ public class LocationPageFragment extends Fragment {
         mBinding.currentwindunit.setText(mFinalWind);
 
         //Set Current Temp
-        if (mFinalTemp.equals(String.valueOf(R.string.Faraheit))) {
+        if (mFinalTemp.equals("\u2109")) {
             mBinding.txtcurrenttemp.setText(String.valueOf((int) mReturnedForecast.getCurrent().getTemp_f()));
-            mBinding.dewpointtemp.setText(mReturnedForecast.getCurrent().getCloud() + R.string.Faraheit);
-            mBinding.feelsLikeTemp.setText((int) (mReturnedForecast.getCurrent().getFeelslike_f() +R.string.Faraheit));
+            mBinding.dewpointtemp.setText(String.valueOf(mReturnedForecast.getCurrent().getCloud())+"\u2109");
+            mBinding.feelsLikeTemp.setText( String.valueOf(mReturnedForecast.getCurrent().getFeelslike_f()) +"\u2109");
         } else {
             mBinding.txtcurrenttemp.setText(String.valueOf((int) mReturnedForecast.getCurrent().getTemp_c()));
-            mBinding.dewpointtemp.setText(mReturnedForecast.getCurrent().getCloud() + "\u2103");
-            mBinding.feelsLikeTemp.setText((int) (mReturnedForecast.getCurrent().getFeelslike_c() + R.string.Celsius));
+            mBinding.dewpointtemp.setText(String.valueOf(mReturnedForecast.getCurrent().getCloud())+"\u2103");
+            mBinding.feelsLikeTemp.setText( String.valueOf(mReturnedForecast.getCurrent().getFeelslike_f()) +"\u2103");
 
         }
         //Set current wind speed
