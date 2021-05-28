@@ -1,9 +1,8 @@
-package com.example.weatherforecastmvvm;
+package com.example.weatherforecastmvvm.Adapter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
@@ -12,29 +11,31 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.weatherforecastmvvm.ForecastDay;
+import com.example.weatherforecastmvvm.R;
 import com.example.weatherforecastmvvm.databinding.EachDayLayoutBinding;
 
 import java.util.List;
 
 public class ForecastDayAdapter extends RecyclerView.Adapter<ForecastDayAdapter.ForecastDayViewHolder> {
     List<ForecastDay> mForecastDay;
-    Context context;
+    Context mContext;
     SharedPreferences sharedPreferences;
-    String finaltemp;
+    String mFinalTemp;
 
     public ForecastDayAdapter(List<ForecastDay> mForecastDay, Context context) {
         this.mForecastDay = mForecastDay;
-        this.context = context;
+        this.mContext = context;
     }
 
     @NonNull
     @Override
     public ForecastDayViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        context = parent.getContext();
-        LayoutInflater inflater = LayoutInflater.from(context);
-        sharedPreferences = context.getSharedPreferences("com.example.weatherforecastmvvm",Context.MODE_PRIVATE);
-        finaltemp = sharedPreferences.getString("Temperature Unit","\u2103");
-        EachDayLayoutBinding eachDayLayoutBinding = DataBindingUtil.inflate(inflater,R.layout.each_day_layout,parent,false);
+        mContext = parent.getContext();
+        LayoutInflater inflater = LayoutInflater.from(mContext);
+        sharedPreferences = mContext.getSharedPreferences("com.example.weatherforecastmvvm",Context.MODE_PRIVATE);
+        mFinalTemp = sharedPreferences.getString("Temperature Unit","\u2103");
+        EachDayLayoutBinding eachDayLayoutBinding = DataBindingUtil.inflate(inflater, R.layout.each_day_layout,parent,false);
         return new ForecastDayViewHolder(eachDayLayoutBinding);
     }
 
@@ -42,10 +43,10 @@ public class ForecastDayAdapter extends RecyclerView.Adapter<ForecastDayAdapter.
     public void onBindViewHolder(@NonNull ForecastDayAdapter.ForecastDayViewHolder holder, int position) {
         ForecastDay forecastDay = mForecastDay.get(position);
         holder.eachDayLayoutBinding.setForecastday(forecastDay);
-        if(finaltemp.equals("\u2103")){holder.eachDayLayoutBinding.eachdaytemp.setText(forecastDay.day.avgtemp_c+finaltemp);}
-        else {holder.eachDayLayoutBinding.eachdaytemp.setText(forecastDay.day.avgtemp_f+finaltemp);}
+        if(mFinalTemp.equals("\u2103")){holder.eachDayLayoutBinding.eachdaytemp.setText(forecastDay.getDay().getAvgtemp_c()+ mFinalTemp);}
+        else {holder.eachDayLayoutBinding.eachdaytemp.setText(forecastDay.getDay().getAvgtemp_f()+ mFinalTemp);}
         ImageView img = holder.eachDayLayoutBinding.imgeachdayweatherimage;
-        Glide.with(context).load("http:"+forecastDay.day.condition.icon).into(img);
+        Glide.with(mContext).load("http:"+forecastDay.getDay().getCondition().getIcon()).into(img);
 
     }
 
@@ -54,7 +55,7 @@ public class ForecastDayAdapter extends RecyclerView.Adapter<ForecastDayAdapter.
         return mForecastDay.size();
     }
 
-    public class ForecastDayViewHolder extends RecyclerView.ViewHolder{
+    public static class ForecastDayViewHolder extends RecyclerView.ViewHolder{
         EachDayLayoutBinding eachDayLayoutBinding;
         public ForecastDayViewHolder(@NonNull EachDayLayoutBinding eachDayLayoutBinding) {
             super(eachDayLayoutBinding.getRoot());

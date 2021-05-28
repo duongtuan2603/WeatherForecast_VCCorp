@@ -1,4 +1,6 @@
-package com.example.weatherforecastmvvm;
+package com.example.weatherforecastmvvm.GetAPIForeCast;
+
+import com.example.weatherforecastmvvm.ForecastDay;
 
 import java.io.Serializable;
 import java.util.List;

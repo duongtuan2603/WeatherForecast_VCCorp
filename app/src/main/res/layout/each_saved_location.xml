@@ -75,20 +75,18 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <Button
+                <ImageView
                     android:id="@+id/deleteeachlocation"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="24dp"
                     android:layout_marginEnd="15.33dp"
                     android:layout_marginRight="15.33dp"
                     android:gravity="center_horizontal"
-                    android:text="x"
-
-                    android:textAlignment="center"
-                    android:textSize="20sp"
-                    app:backgroundTint="#04B6D1"
+                    app:srcCompat="@drawable/ic_baseline_delete_forever_24"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.984"
+                    app:layout_constraintStart_toEndOf="@+id/eachsavedlocationtempunit"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_goneMarginRight="15.33dp" />
 
@@ -104,8 +102,8 @@
 
                 <ImageView
                     android:id="@+id/eachlocationweatherimage"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_marginStart="23dp"
                     android:layout_marginLeft="23dp"
                     android:layout_marginTop="86dp"

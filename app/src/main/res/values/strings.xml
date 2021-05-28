@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">DuongTuan Weather Forecast</string>
-    <string name="degree_celcius">\u2103</string>
     <string name="map_api_key">AIzaSyD3fSeawqe0xmow02IfDr9FC0B06lU1i8Y</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -22,4 +21,44 @@
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="channel_name">channel_name</string>
     <string name="channel_description">channel_description</string>
+
+    <!-- Temperature Units -->
+    <string name="Celsius">\u2103</string>
+    <string name="Faraheit">\u2109</string>
+
+    <!-- Wind Speed Units -->
+    <string name="kph">kph</string>
+    <string name="mph">mph</string>
+
+    <!-- Resource file -->
+    <string name="edtlocation">Type a location</string>
+
+
+    <!-- Home Fragment -->
+
+    <!-- AQI title -->
+    <string name="Good">Good</string>
+    <string name="Moderate">Moderate</string>
+    <string name="Unhealthy_for_Sensitive_Groups">Unhealthy for Sensitive Groups</string>
+    <string name="Unhealthy">Unhealthy</string>
+    <string name="Very_Unhealthy">Very Unhealthy</string>
+    <string name="Hazardous">Hazardous</string>
+
+    <!-- AQI description -->
+    <string name="Air_quality_is_considered_satisfactory">Air quality is considered satisfactory</string>
+    <string name="Air_quality_is_acceptable">Air quality is acceptable</string>
+    <string name="Members_of_sensitive_groups_may_experience_health_effects">Members of sensitive groups may experience health effects</string>
+    <string name="Everyone_may_begin_to_experience_health_effects">Everyone may begin to experience health effects</string>
+    <string name="Health_warnings_of_emergency_conditions">Health warnings of emergency conditions</string>
+    <string name="Health_alert_everyone_may_experience_more_serious_health_effects">Health alert: everyone may experience more serious health effects</string>
+
+    <!-- UV index title -->
+    <string name="Low">Low</string>
+    <string name="Moderate_to_High">Moderate to High</string>
+    <string name="Very_High_to_Extreme">Very High to Extreme</string>
+
+    <!-- UV index description-->
+    <string name="No_protection_needed">No protection needed</string>
+    <string name="Protection_needed">Protection needed</string>
+    <string name="Extra_protection_needed">Extra protection needed</string>
 </resources>

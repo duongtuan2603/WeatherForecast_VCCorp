@@ -1,4 +1,4 @@
-package com.example.weatherforecastmvvm;
+package com.example.weatherforecastmvvm.Adapter;
 
 import android.os.Bundle;
 
@@ -7,10 +7,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+import com.example.weatherforecastmvvm.Fragments.LocationPageFragment;
+import com.example.weatherforecastmvvm.SavedLocation;
+
 import java.util.List;
 
 public class LocationPageAdapter extends FragmentStatePagerAdapter {
-    private List<SavedLocation> mSavedLocation;
+    private final List<SavedLocation> mSavedLocation;
 
     public LocationPageAdapter(@NonNull FragmentManager fm, int behavior, List<SavedLocation> list) {
         super(fm, behavior);
@@ -23,7 +26,7 @@ public class LocationPageAdapter extends FragmentStatePagerAdapter {
         SavedLocation savedLocation = mSavedLocation.get(position);
         LocationPageFragment locationPageFragment = new LocationPageFragment();
         Bundle bundle = new Bundle();
-        bundle.putString("Location Page Fragment", savedLocation.locationname);
+        bundle.putString("Location Page Fragment", savedLocation.getLocationname());
         locationPageFragment.setArguments(bundle);
         return locationPageFragment;
     }

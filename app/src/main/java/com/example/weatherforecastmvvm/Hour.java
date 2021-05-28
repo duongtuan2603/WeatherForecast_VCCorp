@@ -1,10 +1,6 @@
 package com.example.weatherforecastmvvm;
 
-import android.widget.ImageView;
-
-import androidx.databinding.BindingAdapter;
-
-import com.bumptech.glide.Glide;
+import com.example.weatherforecastmvvm.GetAPIForeCast.Condition;
 
 import java.io.Serializable;
 

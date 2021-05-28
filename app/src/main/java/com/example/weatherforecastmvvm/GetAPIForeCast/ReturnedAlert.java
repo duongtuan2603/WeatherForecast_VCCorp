@@ -1,4 +1,4 @@
-package com.example.weatherforecastmvvm;
+package com.example.weatherforecastmvvm.GetAPIForeCast;
 
 import java.io.Serializable;
 import java.util.List;

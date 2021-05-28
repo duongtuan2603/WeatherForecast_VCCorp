@@ -1,12 +1,10 @@
-package com.example.weatherforecastmvvm;
+package com.example.weatherforecastmvvm.Database;
 
-import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
-import androidx.room.Delete;
 import androidx.room.Insert;
-import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
-import androidx.room.Update;
+
+import com.example.weatherforecastmvvm.SavedLocation;
 
 import java.util.List;
 
@@ -14,10 +12,10 @@ import java.util.List;
 public interface SavedLocationDao {
     @Insert
     void insert(SavedLocation location);
+
     @Query("DELETE FROM SavedLocation WHERE locationname = :name")
     void deletebyname(String name);
+
     @Query("SELECT * FROM SavedLocation")
     List<SavedLocation> getalllocations();
-    @Update
-    void update(SavedLocation savedLocation);
 }

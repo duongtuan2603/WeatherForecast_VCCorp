@@ -9,18 +9,18 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_umbrella"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:roundIcon="@drawable/ic_baseline_wb_sunny_24"
         android:theme="@style/Theme.WeatherForecastMVVM"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".SettingsActivity"
+            android:name=".Screens.SettingsActivity"
             android:label="@string/title_activity_settings"></activity>
-        <activity android:name=".AddLocationActivity" />
-        <activity android:name=".LocationListActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Screens.AddLocationActivity" />
+        <activity android:name=".Screens.LocationListActivity" />
+        <activity android:name=".Screens.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,7 +34,7 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-        <service android:name=".ForegroundService"/>
+        <service android:name=".Service.ForegroundService"/>
     </application>
 
 </manifest>

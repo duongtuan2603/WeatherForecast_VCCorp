@@ -1,5 +1,10 @@
 package com.example.weatherforecastmvvm;
 
+import com.example.weatherforecastmvvm.GetAPIForeCast.Current;
+import com.example.weatherforecastmvvm.GetAPIForeCast.Forecast;
+import com.example.weatherforecastmvvm.GetAPIForeCast.ReturnedAlert;
+import com.example.weatherforecastmvvm.getapilocation.Location;
+
 import java.io.Serializable;
 public class ReturnedForecast implements Serializable {
     Location location;

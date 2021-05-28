@@ -1,4 +1,4 @@
-package com.example.weatherforecastmvvm;
+package com.example.weatherforecastmvvm.Service;
 
 import android.app.AlarmManager;
 import android.app.Notification;
@@ -17,6 +17,11 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 
+import com.example.weatherforecastmvvm.API.ForecastAPI;
+import com.example.weatherforecastmvvm.R;
+import com.example.weatherforecastmvvm.ReturnedForecast;
+import com.example.weatherforecastmvvm.Screens.MainActivity;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -25,6 +30,7 @@ public class ForegroundService extends Service {
     SharedPreferences sharedPreferences;
     String finaltemp;
     Long updatefrequency;
+    PendingIntent pendingIntent;
 
     private static final String CHANNEL_ID = "CHANNEL_ID";
 
@@ -34,7 +40,6 @@ public class ForegroundService extends Service {
         sharedPreferences = getApplicationContext().getSharedPreferences("com.example.weatherforecastmvvm", MODE_PRIVATE);
         finaltemp = sharedPreferences.getString("Temperature Unit", "\u2103");
         updatefrequency = sharedPreferences.getLong("Update Frequency", AlarmManager.INTERVAL_HALF_HOUR);
-
         Log.e("Service", "Successfully created");
     }
 
@@ -49,12 +54,20 @@ public class ForegroundService extends Service {
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        createchannelID();
+        Intent intentnotification = new Intent(ForegroundService.this, MainActivity.class);
+        AlarmManager alarmManager =
+                (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+        pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intentnotification, PendingIntent.FLAG_UPDATE_CURRENT);
+        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
+                SystemClock.elapsedRealtime() + updatefrequency,
+                updatefrequency,
+                pendingIntent);
         sendnotification();
         return START_NOT_STICKY;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public void sendnotification() {
+    private void createchannelID() {
         //Create channel ID
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             CharSequence name = getString(R.string.channel_name);
@@ -67,35 +80,30 @@ public class ForegroundService extends Service {
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public void sendnotification() {
         //Create Notification and start foreground
-        apiservice.service.forecast("bea12c175e9041c598b13943211005", "auto:ip", 7, "no", "no", "en").enqueue(new Callback<ReturnedForecast>() {
+        ForecastAPI.service.forecast("bea12c175e9041c598b13943211005", "auto:ip", 7, "no", "no", "en").enqueue(new Callback<ReturnedForecast>() {
             @Override
             public void onResponse(Call<ReturnedForecast> call, Response<ReturnedForecast> response) {
-                Intent intent = new Intent(ForegroundService.this, MainActivity.class);
-                //Set repeating update
-                AlarmManager alarmManager =
-                        (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
-                PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_NO_CREATE);
-                alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP,
-                        SystemClock.elapsedRealtime() + updatefrequency,
-                        updatefrequency,
-                        pendingIntent);
+                //Create Notification
                 Notification notification = new Notification.Builder(getApplicationContext(), CHANNEL_ID)
                         .setSmallIcon(R.drawable.ic_baseline_wb_sunny_24)
-                        .setContentTitle(response.body().location.name + " - " + response.body().location.country)
+                        .setContentTitle(response.body().getLocation().getName() + " - " + response.body().getLocation().getCountry())
                         .setContentText(finaltemp.equals("\u2103")
-                                ? (int) response.body().current.temp_c + " " + finaltemp + " - " + response.body().current.condition.text
-                                : (int) response.body().current.temp_f + " " + finaltemp + " - " + response.body().current.condition.text)
+                                ? (int) response.body().getCurrent().getTemp_c() + " " + finaltemp + " - " + response.body().getCurrent().getCondition().getText()
+                                : (int) response.body().getCurrent().getTemp_f() + " " + finaltemp + " - " + response.body().getCurrent().getCondition().getText())
                         .setPriority(Notification.PRIORITY_DEFAULT)
                         .setContentIntent(pendingIntent)
                         .build();
                 startForeground(1, notification);
-
             }
 
             @Override
             public void onFailure(Call<ReturnedForecast> call, Throwable t) {
-
+                Log.e("Service", "onFailure: Can not get API");
             }
         });
 

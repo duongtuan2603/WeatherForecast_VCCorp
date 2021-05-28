@@ -1,7 +1,6 @@
-package com.example.weatherforecastmvvm;
+package com.example.weatherforecastmvvm.GetAPIForeCast;
 
 import java.io.Serializable;
-import java.text.DecimalFormat;
 
 public class Current implements Serializable {
     int last_updated_epoch;
