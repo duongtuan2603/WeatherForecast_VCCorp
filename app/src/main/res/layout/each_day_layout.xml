@@ -5,7 +5,7 @@
 
         <variable
             name="forecastday"
-            type="com.example.weatherforecastmvvm.ForecastDay" />
+            type="com.example.weatherforecastmvvm.getapiforecast.ForecastDay" />
     </data>
 
     <LinearLayout

@@ -5,7 +5,7 @@
 
         <variable
             name="hour"
-            type="com.example.weatherforecastmvvm.Hour" />
+            type="com.example.weatherforecastmvvm.getapiforecast.Hour" />
     </data>
 
     <LinearLayout

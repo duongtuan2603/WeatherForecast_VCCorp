@@ -5,7 +5,7 @@
 
         <variable
             name="searchedlocation"
-            type="com.example.weatherforecastmvvm.SearchLocation" />
+            type="com.example.weatherforecastmvvm.getapilocation.SearchLocation" />
     </data>
 
     <LinearLayout

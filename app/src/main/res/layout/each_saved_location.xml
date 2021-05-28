@@ -6,7 +6,7 @@
 
         <variable
             name="savedlocation"
-            type="com.example.weatherforecastmvvm.SavedLocation" />
+            type="com.example.weatherforecastmvvm.getapilocation.SavedLocation" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
