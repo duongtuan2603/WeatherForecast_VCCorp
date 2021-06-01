@@ -1,7 +1,7 @@
 package com.example.weatherforecastmvvm.api;
 
-import com.example.weatherforecastmvvm.getapiforecast.ReturnedForecast;
-import com.example.weatherforecastmvvm.getapilocation.SearchLocation;
+import com.example.weatherforecastmvvm.data.model.getapiforecast.ReturnedForecast;
+import com.example.weatherforecastmvvm.data.local.SearchLocation;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

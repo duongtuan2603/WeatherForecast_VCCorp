@@ -6,7 +6,7 @@
 
         <variable
             name="savedlocation"
-            type="com.example.weatherforecastmvvm.getapilocation.SavedLocation" />
+            type="com.example.weatherforecastmvvm.data.local.SavedLocation" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,6 +15,7 @@
         android:layout_marginBottom="10dp">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/eachlocation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="10dp"

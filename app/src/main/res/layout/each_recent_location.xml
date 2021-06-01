@@ -6,27 +6,27 @@
 
         <variable
             name="recentlocation"
-            type="com.example.weatherforecastmvvm.getapilocation.RecentLocation" />
+            type="com.example.weatherforecastmvvm.data.local.RecentLocation" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
-        android:layout_height="wrap_content"
-        android:padding="5dp">
+        android:layout_height="wrap_content">
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
+            android:layout_gravity="center"
             app:srcCompat="@drawable/ic_baseline_restore_24"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="5dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
             android:text="@{recentlocation.recentlocation}"
             android:textSize="18sp"
-            android:layout_marginStart="5dp" />
+            android:layout_marginStart="20dp" />
 
 
     </LinearLayout>

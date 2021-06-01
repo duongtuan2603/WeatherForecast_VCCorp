@@ -19,8 +19,8 @@ import androidx.annotation.RequiresApi;
 
 import com.example.weatherforecastmvvm.api.ForecastAPI;
 import com.example.weatherforecastmvvm.R;
-import com.example.weatherforecastmvvm.getapiforecast.ReturnedForecast;
-import com.example.weatherforecastmvvm.screen.MainActivity;
+import com.example.weatherforecastmvvm.data.model.getapiforecast.ReturnedForecast;
+import com.example.weatherforecastmvvm.ui.activities.MainActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;

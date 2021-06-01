@@ -7,14 +7,14 @@
 
         <variable
             name="returnedforecast"
-            type="com.example.weatherforecastmvvm.getapiforecast.ReturnedForecast" />
+            type="com.example.weatherforecastmvvm.data.model.getapiforecast.ReturnedForecast" />
     </data>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/backgroundfinal"
-        tools:context=".screen.MainActivity">
+        tools:context=".ui.activities.MainActivity">
 
 
         <ImageView

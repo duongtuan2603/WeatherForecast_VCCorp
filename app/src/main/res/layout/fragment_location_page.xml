@@ -6,7 +6,7 @@
 
         <variable
             name="returnedforecast"
-            type="com.example.weatherforecastmvvm.getapiforecast.ReturnedForecast" />
+            type="com.example.weatherforecastmvvm.data.model.getapiforecast.ReturnedForecast" />
     </data>
 
     <RelativeLayout
@@ -76,8 +76,9 @@
                         android:layout_alignParentStart="true"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
-                        android:layout_marginStart="135dp"
-                        android:layout_marginLeft="135dp"
+                        android:layout_toRightOf="@id/txtcurrenttemp"
+                        android:layout_marginStart="165dp"
+                        android:layout_marginLeft="165dp"
                         android:layout_marginTop="45dp"
                         android:fontFamily="@font/roboto"
                         android:text="\u2103"
@@ -92,8 +93,8 @@
                         android:layout_alignParentStart="true"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
-                        android:layout_marginStart="135dp"
-                        android:layout_marginLeft="135dp"
+                        android:layout_marginStart="165dp"
+                        android:layout_marginLeft="165dp"
                         android:layout_marginTop="110dp"
                         android:fontFamily="@font/roboto"
                         android:maxLines="2"
