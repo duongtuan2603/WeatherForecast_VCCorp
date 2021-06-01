@@ -5,21 +5,21 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.weatherforecastmvvm.R;
 import com.example.weatherforecastmvvm.api.ForecastAPI;
+import com.example.weatherforecastmvvm.data.database.SavedLocationRoomDatabase;
+import com.example.weatherforecastmvvm.data.local.SavedLocation;
+import com.example.weatherforecastmvvm.data.local.SearchLocation;
+import com.example.weatherforecastmvvm.data.model.getapiforecast.ReturnedForecast;
+import com.example.weatherforecastmvvm.databinding.ActivityAddLocationBinding;
 import com.example.weatherforecastmvvm.ui.adapter.RecentLocationAdapter;
 import com.example.weatherforecastmvvm.ui.adapter.SearchLocationAdapter;
-import com.example.weatherforecastmvvm.data.database.SavedLocationRoomDatabase;
-import com.example.weatherforecastmvvm.data.local.RecentLocation;
-import com.example.weatherforecastmvvm.R;
-import com.example.weatherforecastmvvm.data.model.getapiforecast.ReturnedForecast;
-import com.example.weatherforecastmvvm.data.local.SearchLocation;
-import com.example.weatherforecastmvvm.databinding.ActivityAddLocationBinding;
-import com.example.weatherforecastmvvm.data.local.SavedLocation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +31,6 @@ import retrofit2.Response;
 public class AddLocationActivity extends AppCompatActivity {
     ActivityAddLocationBinding mBinding;
     List<SearchLocation> mSearchLocation = new ArrayList<>();
-    List<RecentLocation> mRecentLocation = new ArrayList<>();
     SearchLocationAdapter mSearchLocationAdapter;
     RecentLocationAdapter mRecentLocationAdapter;
     String mGetLocation;
@@ -41,7 +40,7 @@ public class AddLocationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_add_location);
         //
-        mRecentLocationAdapter = new RecentLocationAdapter(SavedLocationRoomDatabase.getDatabase(this).savedLocationDao().getalllocations(),this );
+        mRecentLocationAdapter = new RecentLocationAdapter(SavedLocationRoomDatabase.getDatabase(this).savedLocationDao().getalllocations(), this);
         mBinding.recyclerviewaddlocation.setAdapter(mRecentLocationAdapter);
         mBinding.recyclerviewaddlocation.setLayoutManager(new LinearLayoutManager(this));
         mBinding.edtlocation.addTextChangedListener(new TextWatcher() {
@@ -62,6 +61,13 @@ public class AddLocationActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable s) {
 
+            }
+        });
+        //Back Button
+        mBinding.btnback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 

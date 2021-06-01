@@ -7,8 +7,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.example.weatherforecastmvvm.ui.fragments.LocationPageFragment;
 import com.example.weatherforecastmvvm.data.local.SavedLocation;
+import com.example.weatherforecastmvvm.ui.fragments.LocationPageFragment;
 
 import java.util.List;
 

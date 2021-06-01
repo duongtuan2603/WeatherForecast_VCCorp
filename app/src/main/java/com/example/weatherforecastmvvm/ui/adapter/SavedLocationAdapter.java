@@ -1,6 +1,5 @@
 package com.example.weatherforecastmvvm.ui.adapter;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,11 +10,11 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.weatherforecastmvvm.data.local.SharedPreferenceSettings;
-import com.example.weatherforecastmvvm.ui.activities.LocationListActivity;
 import com.example.weatherforecastmvvm.R;
 import com.example.weatherforecastmvvm.data.local.SavedLocation;
+import com.example.weatherforecastmvvm.data.local.SharedPreferenceSettings;
 import com.example.weatherforecastmvvm.databinding.EachSavedLocationBinding;
+import com.example.weatherforecastmvvm.ui.activities.LocationListActivity;
 
 import java.util.List;
 
@@ -36,7 +35,7 @@ public class SavedLocationAdapter extends RecyclerView.Adapter<SavedLocationAdap
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(mContext);
-        EachSavedLocationBinding binding = DataBindingUtil.inflate(inflater, R.layout.each_saved_location,parent,false);
+        EachSavedLocationBinding binding = DataBindingUtil.inflate(inflater, R.layout.each_saved_location, parent, false);
         return new ViewHolder(binding);
     }
 
@@ -46,9 +45,12 @@ public class SavedLocationAdapter extends RecyclerView.Adapter<SavedLocationAdap
         holder.position = position;
         holder.binding.setSavedlocation(savedLocation);
         holder.binding.eachsavedlocationtempunit.setText(mFinalTemp);
-        if(mFinalTemp.equals("\u2103")){holder.binding.eachsavedlocationcurrenttemp.setText(String.valueOf((int)savedLocation.getCurrenttemp_c()));}
-        else {holder.binding.eachsavedlocationcurrenttemp.setText(String.valueOf((int)savedLocation.getCurrenttemp_f()));}
-        Glide.with(mContext).load("http:"+savedLocation.getCurrentweathericon()).into(holder.binding.eachlocationweatherimage);
+        if (mFinalTemp.equals("\u2103")) {
+            holder.binding.eachsavedlocationcurrenttemp.setText(String.valueOf((int) savedLocation.getCurrenttemp_c()));
+        } else {
+            holder.binding.eachsavedlocationcurrenttemp.setText(String.valueOf((int) savedLocation.getCurrenttemp_f()));
+        }
+        Glide.with(mContext).load("http:" + savedLocation.getCurrentweathericon()).into(holder.binding.eachlocationweatherimage);
 
     }
 
@@ -57,7 +59,7 @@ public class SavedLocationAdapter extends RecyclerView.Adapter<SavedLocationAdap
         return mSavedLocation.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder {
         EachSavedLocationBinding binding;
         int position;
 

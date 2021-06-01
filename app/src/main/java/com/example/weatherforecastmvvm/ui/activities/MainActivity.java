@@ -7,14 +7,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.example.weatherforecastmvvm.api.ForecastAPI;
-import com.example.weatherforecastmvvm.ui.adapter.LocationPageAdapter;
-import com.example.weatherforecastmvvm.data.database.SavedLocationRoomDatabase;
 import com.example.weatherforecastmvvm.R;
-import com.example.weatherforecastmvvm.data.model.getapiforecast.ReturnedForecast;
+import com.example.weatherforecastmvvm.api.ForecastAPI;
+import com.example.weatherforecastmvvm.data.database.SavedLocationRoomDatabase;
 import com.example.weatherforecastmvvm.data.local.SavedLocation;
-import com.example.weatherforecastmvvm.service.ForegroundService;
+import com.example.weatherforecastmvvm.data.model.getapiforecast.ReturnedForecast;
 import com.example.weatherforecastmvvm.databinding.ActivityMainBinding;
+import com.example.weatherforecastmvvm.service.ForegroundService;
+import com.example.weatherforecastmvvm.ui.adapter.LocationPageAdapter;
 
 import java.util.List;
 
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setCurrentView() {
         Intent intent = getIntent();
-        binding.viewpager.setCurrentItem(intent.getIntExtra("Location clicked",0));
+        binding.viewpager.setCurrentItem(intent.getIntExtra("Location clicked", 0));
     }
 
     @Override

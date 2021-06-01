@@ -12,14 +12,14 @@ import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.weatherforecastmvvm.data.local.SharedPreferenceSettings;
+import com.example.weatherforecastmvvm.R;
 import com.example.weatherforecastmvvm.api.ForecastAPI;
+import com.example.weatherforecastmvvm.data.local.SharedPreferenceSettings;
+import com.example.weatherforecastmvvm.data.model.getapiforecast.ReturnedForecast;
+import com.example.weatherforecastmvvm.databinding.FragmentLocationPageBinding;
+import com.example.weatherforecastmvvm.ui.activities.MainActivity;
 import com.example.weatherforecastmvvm.ui.adapter.ForecastDayAdapter;
 import com.example.weatherforecastmvvm.ui.adapter.HourAdapter;
-import com.example.weatherforecastmvvm.R;
-import com.example.weatherforecastmvvm.data.model.getapiforecast.ReturnedForecast;
-import com.example.weatherforecastmvvm.ui.activities.MainActivity;
-import com.example.weatherforecastmvvm.databinding.FragmentLocationPageBinding;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -133,12 +133,12 @@ public class LocationPageFragment extends Fragment {
         //Set Current Temp
         if (mFinalTemp.equals("\u2109")) {
             mBinding.txtcurrenttemp.setText(String.valueOf((int) mReturnedForecast.getCurrent().getTemp_f()));
-            mBinding.dewpointtemp.setText(String.valueOf(mReturnedForecast.getCurrent().getCloud())+"\u2109");
-            mBinding.feelsLikeTemp.setText( String.valueOf(mReturnedForecast.getCurrent().getFeelslike_f()) +"\u2109");
+            mBinding.dewpointtemp.setText(String.valueOf(mReturnedForecast.getCurrent().getCloud()) + "\u2109");
+            mBinding.feelsLikeTemp.setText(String.valueOf(mReturnedForecast.getCurrent().getFeelslike_f()) + "\u2109");
         } else {
             mBinding.txtcurrenttemp.setText(String.valueOf((int) mReturnedForecast.getCurrent().getTemp_c()));
-            mBinding.dewpointtemp.setText(String.valueOf(mReturnedForecast.getCurrent().getCloud())+"\u2103");
-            mBinding.feelsLikeTemp.setText( String.valueOf(mReturnedForecast.getCurrent().getFeelslike_f()) +"\u2103");
+            mBinding.dewpointtemp.setText(String.valueOf(mReturnedForecast.getCurrent().getCloud()) + "\u2103");
+            mBinding.feelsLikeTemp.setText(String.valueOf(mReturnedForecast.getCurrent().getFeelslike_f()) + "\u2103");
 
         }
         //Set current wind speed

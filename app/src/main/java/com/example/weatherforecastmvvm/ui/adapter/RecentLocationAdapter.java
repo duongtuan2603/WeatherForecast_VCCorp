@@ -8,10 +8,10 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.weatherforecastmvvm.data.local.RecentLocation;
 import com.example.weatherforecastmvvm.R;
-import com.example.weatherforecastmvvm.databinding.EachRecentLocationBinding;
+import com.example.weatherforecastmvvm.data.local.RecentLocation;
 import com.example.weatherforecastmvvm.data.local.SavedLocation;
+import com.example.weatherforecastmvvm.databinding.EachRecentLocationBinding;
 
 import java.util.List;
 
@@ -29,13 +29,13 @@ public class RecentLocationAdapter extends RecyclerView.Adapter<RecentLocationAd
     public RecentLocationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         mContext = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(mContext);
-        EachRecentLocationBinding mBinding = DataBindingUtil.inflate(inflater, R.layout.each_recent_location,parent,false);
+        EachRecentLocationBinding mBinding = DataBindingUtil.inflate(inflater, R.layout.each_recent_location, parent, false);
         return new RecentLocationViewHolder(mBinding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecentLocationViewHolder holder, int position) {
-        RecentLocation recentLocation = new RecentLocation(mSavedLocation.get(mSavedLocation.size()-1-position).getLocationname());
+        RecentLocation recentLocation = new RecentLocation(mSavedLocation.get(mSavedLocation.size() - 1 - position).getLocationname());
         holder.binding.setRecentlocation(recentLocation);
 
     }
@@ -47,6 +47,7 @@ public class RecentLocationAdapter extends RecyclerView.Adapter<RecentLocationAd
 
     public class RecentLocationViewHolder extends RecyclerView.ViewHolder {
         EachRecentLocationBinding binding;
+
         public RecentLocationViewHolder(@NonNull EachRecentLocationBinding itemView) {
             super(itemView.getRoot());
             binding = itemView;

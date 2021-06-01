@@ -9,9 +9,9 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.weatherforecastmvvm.R;
-import com.example.weatherforecastmvvm.ui.activities.AddLocationActivity;
 import com.example.weatherforecastmvvm.data.local.SearchLocation;
 import com.example.weatherforecastmvvm.databinding.EachSearchedLocationBinding;
+import com.example.weatherforecastmvvm.ui.activities.AddLocationActivity;
 
 import java.util.List;
 
